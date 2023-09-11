@@ -19,6 +19,5 @@ class AuthAdmin
             session()->regenerateToken();
             return redirect('login')->with('message', __('auth.failed'));
         }
-
     }
 }

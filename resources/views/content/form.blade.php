@@ -1,6 +1,6 @@
-@extends('master');
+@extends('master')
 
-@section('title', 'Content CRUD');
+@section('title', 'Content CRUD')
 
 @section('content')
     @if (empty($contents->id))

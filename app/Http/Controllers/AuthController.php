@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     public function showLogin(){
-        return view('content.login');
+        return view('products.login');
     }
 
     public function checkLogin(Request $request)
@@ -18,10 +20,18 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/content');
+            return redirect()->intended('/products');
         }
-        return back()->withError([
+        return back()->withErrors([
             'email' => 'Credentials do not match our records',
         ]);
     }
+    public function logout(Request $request)
+{
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/login');
+}
 }

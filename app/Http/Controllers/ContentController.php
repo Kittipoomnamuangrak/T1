@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContentRequest;
 use App\Models\Content;
 
+
 class ContentController extends Controller
 {
     public function index()
